@@ -1,11 +1,9 @@
-package ch02.ATM;
-
 import java.util.Scanner;
 
 public class Main {
 	static int index = 0;
 	public static void main(String[] args) {
-		ATM[] arr = new ATM[100];
+		inventory[] arr = new inventory[100];
 		Scanner sc = new Scanner(System.in);
 		
 		boolean bl = true;
@@ -16,49 +14,49 @@ public class Main {
 		
 		
 		while(bl) {
-			System.out.println("1.ÀÔ°í 2.Ãâ°í 3.»èÁ¦ 4.ÇöÈ² 5.Á¾·á");
+			System.out.println("1.ì…ê³  2.ì¶œê³  3.ì‚­ì œ 4.í˜„í™© 5.ì¢…ë£Œ");
 			select = sc.nextInt();
 			
 			switch (select) {
 			case 1: 
-				System.out.println("ÀÔ°í ÇÒ »óÇ°À» ÀÔ·ÂÇØ ÁÖ¼¼¿ä");
+				System.out.println("ì…ê³  í•  ìƒí’ˆì„ ì…ë ¥í•´ ì£¼ì„¸ìš”");
 				name = sc.next();
-				System.out.println("»óÇ°ÀÇ °¹¼ö¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä");
+				System.out.println("ìƒí’ˆì˜ ê°¯ìˆ˜ë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš”");
 				num = sc.nextInt();
-				tr = find(arr, name);//ÀÖ´Ù¸é ¸î¹øÂ°ÀÎÁö Ãâ·Â ¾ø´Ù¸é -1
+				tr = find(arr, name);//ìˆë‹¤ë©´ ëª‡ë²ˆì§¸ì¸ì§€ ì¶œë ¥ ì—†ë‹¤ë©´ -1
 				
-				if(tr < 0) {//¾ø´Ù¸é Ãß°¡
-				arr[index] = new ATM(name, num);
+				if(tr < 0) {//ì—†ë‹¤ë©´ ì¶”ê°€
+				arr[index] = new inventory(name, num);
 				index++;
-				}else {//ÀÖ´Ù¸é °¹¼ö¸¸ Ãß°¡
+				}else {//ìˆë‹¤ë©´ ê°¯ìˆ˜ë§Œ ì¶”ê°€
 					arr[tr].in(num);
 				}
 				break;
 			case 2: 
-				System.out.println("Ãâ°í ÇÒ »óÇ°À» ¼±ÅÃÇØ ÁÖ¼¼¿ä");
+				System.out.println("ì¶œê³  í•  ìƒí’ˆì„ ì„ íƒí•´ ì£¼ì„¸ìš”");
 				name = sc.next();
-				System.out.println("Ãâ°í ÇÒ °¹¼ö¸¦ ÀÔ·ÂÇØ ÁÖ¼¼¿ä");
+				System.out.println("ì¶œê³  í•  ê°¯ìˆ˜ë¥¼ ì…ë ¥í•´ ì£¼ì„¸ìš”");
 				num = sc.nextInt();
 				
-				tr = find(arr,name);//ÀÖ´Ù¸é ¸î¹øÂ°ÀÎÁö ¾ø´Ù¸é -1
+				tr = find(arr,name);//ìˆë‹¤ë©´ ëª‡ë²ˆì§¸ì¸ì§€ ì—†ë‹¤ë©´ -1
 				
 				if(tr < 0) {
-					System.out.println("¾ø´Â Á¦Ç°ÀÔ´Ï´Ù.");
+					System.out.println("ì—†ëŠ” ì œí’ˆì…ë‹ˆë‹¤.");
 				}else {
 					arr[tr].out(num);
 				}
 				
 				break;
 			case 3: 
-				System.out.println("»èÁ¦ÇÒ Á¦Ç°À» ¼±ÅÃÇØ ÁÖ¼¼¿ä");
+				System.out.println("ì‚­ì œí•  ì œí’ˆì„ ì„ íƒí•´ ì£¼ì„¸ìš”");
 				name = sc.next();
 				tr = find(arr,name);
 				
 				if(tr < 0) {
-					System.out.println("Á¸ÀçÇÏÁö ¾Ê´Â Á¦Ç°ÀÔ´Ï´Ù.");
+					System.out.println("ì¡´ì¬í•˜ì§€ ì•ŠëŠ” ì œí’ˆì…ë‹ˆë‹¤.");
 				}else {
 				remove(arr,name,tr);
-				System.out.println("»èÁ¦ µÇ¾ú½À´Ï´Ù.");
+				System.out.println("ì‚­ì œ ë˜ì—ˆìŠµë‹ˆë‹¤.");
 				}
 				break;
 			case 4: 
@@ -66,16 +64,16 @@ public class Main {
 				break;
 			case 5: 
 				bl = false;
-				System.out.println("ÀÌ¿ë °¨»çÇÕ´Ï´Ù.");
+				System.out.println("ì´ìš© ê°ì‚¬í•©ë‹ˆë‹¤.");
 				break;			
 			default:
-				System.out.println("¼ıÀÚ¸¦ Àß¸ø ÀÔ·Â ÇÏ¼Ì½À´Ï´Ù.");
+				System.out.println("ìˆ«ìë¥¼ ì˜ëª» ì…ë ¥ í•˜ì…¨ìŠµë‹ˆë‹¤.");
 			}
 		}
 		
 		
 	}
-	public static int find(ATM[] arr, String name) {
+	public static int find(inventory[] arr, String name) {
 		for(int i = 0; i < index; i++) {
 			if(arr[i].getGoods().equals(name)) {
 				return i;
@@ -84,15 +82,15 @@ public class Main {
 		return -1;
 	}
 	
-	public static void show(ATM[] arr) {
-		System.out.println("ÇöÀç ÀÔ°í »óÈ²Àº");
+	public static void show(inventory[] arr) {
+		System.out.println("í˜„ì¬ ì…ê³  ìƒí™©ì€");
 		for(int i =0; i < index; i++) {
 			System.out.println(arr[i].getGoods()+" : "+arr[i].getNum());
 		}
-		System.out.println("ÀÔ´Ï´Ù");
+		System.out.println("ì…ë‹ˆë‹¤");
 	}
 	
-	public static void remove(ATM[] arr, String name, int tr) {
+	public static void remove(inventory[] arr, String name, int tr) {
 		for(int i = tr; i < index; i++) {
 			arr[i] = arr[i+1];
 			
