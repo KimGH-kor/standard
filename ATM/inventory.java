@@ -1,25 +1,23 @@
-package ch02.ATM;
-
-public class ATM {
+public class inventory {
 
 	String goods;
 	int num;
 	
-	public ATM(String goods, int num){
+	public inventory(String goods, int num){
 		this.goods = goods;
 		this.num = num;
 	}
 	
 	public void in(int num) {
 		this.num += num;
-		System.out.println("ÀÔ°í µÇ¾ú½À´Ï´Ù.");
+		System.out.println("ì…ê³  ë˜ì—ˆìŠµë‹ˆë‹¤.");
 	}
 	public void out(int num) {
 		if(this.num >= num) {
 			this.num -= num;
-			System.out.println("Ãâ°í µÇ¾ú½À´Ï´Ù.");
+			System.out.println("ì¶œê³  ë˜ì—ˆìŠµë‹ˆë‹¤.");
 		}else {
-			System.out.println("°¹¼ö°¡ ºÎÁ·ÇÕ´Ï´Ù.");
+			System.out.println("ê°¯ìˆ˜ê°€ ë¶€ì¡±í•©ë‹ˆë‹¤.");
 		}
 		
 	}
